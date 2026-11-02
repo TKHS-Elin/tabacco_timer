@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "5分インターバルタイマー",
+  "short_name": "5分タイマー",
+  "description": "ブザーとチャイムが交互に鳴る5分タイマー",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#10151c",
+  "theme_color": "#10151c",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

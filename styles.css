@@ -1,0 +1,224 @@
+:root {
+  color-scheme: dark;
+  font-family: "Segoe UI", "Noto Sans JP", sans-serif;
+  background: #10151c;
+  color: #f3f5f8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --muted: #8d98a8;
+  --accent: #70e0bd;
+  --panel: #171e27;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  background: #10151c;
+}
+
+.stopwatch {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: max(24px, env(safe-area-inset-top)) 24px max(20px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  background:
+    radial-gradient(ellipse at 50% 27%, rgb(40 73 76 / 18%), transparent 45%),
+    #10151c;
+  transition: background 250ms ease;
+}
+
+.stopwatch:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: -6px;
+}
+
+.stopwatch.phase-chime {
+  --accent: #82b8ff;
+  background:
+    radial-gradient(ellipse at 50% 27%, rgb(51 91 146 / 20%), transparent 45%),
+    #10151c;
+}
+
+.stopwatch.phase-buzzer.is-running {
+  --accent: #ff9a76;
+  background:
+    radial-gradient(ellipse at 50% 27%, rgb(133 69 48 / 21%), transparent 45%),
+    #10151c;
+}
+
+.stopwatch.phase-chime.is-running {
+  --accent: #82b8ff;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgb(112 224 189 / 34%);
+  border-radius: 15px;
+  color: var(--accent);
+  background: rgb(112 224 189 / 8%);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.eyebrow {
+  margin: 0 0 3px;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.timer-panel {
+  width: min(100%, 840px);
+  padding: clamp(52px, 12vh, 104px) 0 48px;
+  text-align: center;
+}
+
+.timer-label {
+  margin: 0 0 15px;
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+.timer {
+  margin: 0;
+  font-family: "Segoe UI", "Roboto", sans-serif;
+  font-size: clamp(76px, 16vw, 144px);
+  font-variant-numeric: tabular-nums;
+  font-weight: 300;
+  letter-spacing: -0.07em;
+  line-height: 1.08;
+  white-space: nowrap;
+}
+
+.timer-rule {
+  width: min(70%, 390px);
+  height: 1px;
+  margin: 30px auto 0;
+  background: #29323e;
+}
+
+.timer-rule span {
+  display: block;
+  width: 34px;
+  height: 2px;
+  margin: -1px auto 0;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgb(112 224 189 / 45%);
+}
+
+.phase-panel {
+  width: min(100%, 560px);
+  margin: 0 auto;
+  padding: 25px 20px;
+  border: 1px solid #29323e;
+  border-radius: 20px;
+  background: rgb(23 30 39 / 78%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.phase-indicator {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--accent), transparent 25%);
+}
+
+.phase-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tap-hint {
+  margin: 9px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.availability-note {
+  min-height: 18px;
+  margin: 16px 0 0;
+  color: #ffb59f;
+  font-size: 12px;
+  text-align: center;
+}
+
+.app-footer {
+  width: min(100%, 840px);
+  margin-top: auto;
+  padding-top: 18px;
+  color: #667383;
+  font-size: 11px;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 700px) {
+  .stopwatch {
+    padding-right: 48px;
+    padding-left: 48px;
+  }
+
+  .timer-panel {
+    padding-top: clamp(64px, 12vh, 112px);
+    padding-bottom: 60px;
+  }
+}
+
+@media (max-height: 700px) {
+  .timer-panel {
+    padding-top: 36px;
+    padding-bottom: 28px;
+  }
+
+  .timer-rule {
+    margin-top: 20px;
+  }
+
+  .phase-panel {
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
